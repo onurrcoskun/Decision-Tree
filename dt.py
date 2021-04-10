@@ -1,7 +1,6 @@
 # -*- coding: utf-8 -*-
 """
 Created on Sun Nov  1 14:36:03 2020
-
 @author: Onur
 """
 import numpy as np
@@ -10,12 +9,10 @@ import pandas as pd
 
 # veri yükleme
 veriler = pd.read_csv('maaslar.csv')
-
 x = veriler.iloc[:,1:2]
 y = veriler.iloc[:,2:]
 X = x.values
 Y = y.values
-
 
 from sklearn.linear_model import LinearRegression
 lin_reg = LinearRegression()
@@ -46,13 +43,10 @@ plt.plot(X,lin_reg2.predict(poly_reg.fit_transform(X)), color = 'red')
 plt.show()
 
 #tahminler
-
 print(lin_reg.predict([[11]]))
 print(lin_reg.predict([[6.6]]))
-
 print(lin_reg2.predict(poly_reg.fit_transform([[6.6]])))
 print(lin_reg2.predict(poly_reg.fit_transform([[11]])))
-
 
 #verilerin olceklenmesi
 from sklearn.preprocessing import StandardScaler
@@ -63,7 +57,6 @@ x_olcekli = sc1.fit_transform(X)
 
 sc2=StandardScaler()
 y_olcekli = np.ravel(sc2.fit_transform(Y.reshape(-1,1)))
-
 
 from sklearn.svm import SVR
 
@@ -76,7 +69,6 @@ plt.plot(x_olcekli,svr_reg.predict(x_olcekli),color='red')
 plt.show()
 print(svr_reg.predict([[11]]))
 print(svr_reg.predict([[6.6]]))
-
 
 
 from sklearn.tree import DecisionTreeRegressor
